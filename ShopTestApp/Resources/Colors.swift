@@ -13,4 +13,8 @@ enum Colors {
   static let textField = UIColor(hexString: "#E8E8E8")
   static let textFieldPlaceHolder = UIColor(hexString: "#7B7B7B")
   static let logIn = UIColor(hexString: "#254FE6")
+  static let profileImageBorder = UIColor(hexString: "#C0C0C0")
+  static let profileName = UIColor(hexString: "#3F3F3F")
+  static let changePhoto = UIColor(hexString: "#808080")
+
 }

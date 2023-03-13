@@ -11,6 +11,10 @@
 		D9A1B39F29BF40A8009D905C /* UITextField+RoundedBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A1B39E29BF40A8009D905C /* UITextField+RoundedBorder.swift */; };
 		D9A1B3A129BF45C1009D905C /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A1B3A029BF45C1009D905C /* ProfileViewController.swift */; };
 		D9C58F1129BF310F00E912CA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C58F1029BF310F00E912CA /* LoginViewController.swift */; };
+		D9EE9F3329BF481000EB7418 /* UIImageView+Rounded.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9EE9F3229BF481000EB7418 /* UIImageView+Rounded.swift */; };
+		D9EE9F3529BF488E00EB7418 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9EE9F3429BF488E00EB7418 /* ProfileHeaderView.swift */; };
+		D9EE9F3829BF4ACD00EB7418 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9EE9F3729BF4ACD00EB7418 /* ProfileTableViewCell.swift */; };
+		D9EE9F3A29BF56F500EB7418 /* SignInVCViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9EE9F3929BF56F500EB7418 /* SignInVCViewModel.swift */; };
 		D9F120F429BE5ED200F80262 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F120F329BE5ED200F80262 /* AppDelegate.swift */; };
 		D9F120F629BE5ED200F80262 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F120F529BE5ED200F80262 /* SceneDelegate.swift */; };
 		D9F120F829BE5ED200F80262 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F120F729BE5ED200F80262 /* SignInViewController.swift */; };
@@ -30,6 +34,10 @@
 		D9A1B39E29BF40A8009D905C /* UITextField+RoundedBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+RoundedBorder.swift"; sourceTree = "<group>"; };
 		D9A1B3A029BF45C1009D905C /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		D9C58F1029BF310F00E912CA /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		D9EE9F3229BF481000EB7418 /* UIImageView+Rounded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Rounded.swift"; sourceTree = "<group>"; };
+		D9EE9F3429BF488E00EB7418 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
+		D9EE9F3729BF4ACD00EB7418 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
+		D9EE9F3929BF56F500EB7418 /* SignInVCViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVCViewModel.swift; sourceTree = "<group>"; };
 		D9F120F029BE5ED200F80262 /* ShopTestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShopTestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9F120F329BE5ED200F80262 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D9F120F529BE5ED200F80262 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -71,6 +79,16 @@
 				83E31A73A4F24FE0792D2B3C /* libPods-ShopTestApp.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D9EE9F3629BF489400EB7418 /* ProfileViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D9A1B3A029BF45C1009D905C /* ProfileViewController.swift */,
+				D9EE9F3729BF4ACD00EB7418 /* ProfileTableViewCell.swift */,
+				D9EE9F3429BF488E00EB7418 /* ProfileHeaderView.swift */,
+			);
+			path = ProfileViewController;
 			sourceTree = "<group>";
 		};
 		D9F120E729BE5ED200F80262 = {
@@ -129,8 +147,9 @@
 			isa = PBXGroup;
 			children = (
 				D9F120F729BE5ED200F80262 /* SignInViewController.swift */,
+				D9EE9F3929BF56F500EB7418 /* SignInVCViewModel.swift */,
 				D9C58F1029BF310F00E912CA /* LoginViewController.swift */,
-				D9A1B3A029BF45C1009D905C /* ProfileViewController.swift */,
+				D9EE9F3629BF489400EB7418 /* ProfileViewController */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -140,6 +159,7 @@
 			children = (
 				D9F1210E29BE68BF00F80262 /* UIColor+Hex.swift */,
 				D9A1B39E29BF40A8009D905C /* UITextField+RoundedBorder.swift */,
+				D9EE9F3229BF481000EB7418 /* UIImageView+Rounded.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -244,11 +264,15 @@
 			files = (
 				D9C58F1129BF310F00E912CA /* LoginViewController.swift in Sources */,
 				D9F120F829BE5ED200F80262 /* SignInViewController.swift in Sources */,
+				D9EE9F3529BF488E00EB7418 /* ProfileHeaderView.swift in Sources */,
 				D9F1211229BE692D00F80262 /* Colors.swift in Sources */,
 				D9A1B39F29BF40A8009D905C /* UITextField+RoundedBorder.swift in Sources */,
 				D9F1210F29BE68C000F80262 /* UIColor+Hex.swift in Sources */,
+				D9EE9F3A29BF56F500EB7418 /* SignInVCViewModel.swift in Sources */,
 				D9F120F429BE5ED200F80262 /* AppDelegate.swift in Sources */,
+				D9EE9F3329BF481000EB7418 /* UIImageView+Rounded.swift in Sources */,
 				D9A1B3A129BF45C1009D905C /* ProfileViewController.swift in Sources */,
+				D9EE9F3829BF4ACD00EB7418 /* ProfileTableViewCell.swift in Sources */,
 				D9F1211529BE736500F80262 /* Fonts.swift in Sources */,
 				D9F120F629BE5ED200F80262 /* SceneDelegate.swift in Sources */,
 			);
