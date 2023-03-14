@@ -141,7 +141,8 @@ final class SignInViewController: UIViewController {
   }
 
   @objc private func labelTapped(_ sender: UITapGestureRecognizer) {
-    let loginViewController = LoginViewController()
+    let viewModel = LoginVCViewModel()
+    let loginViewController = LoginViewController(viewModel: viewModel)
     present(loginViewController, animated: true)
   }
 
@@ -167,7 +168,7 @@ final class SignInViewController: UIViewController {
     guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
     let windows = windowScene.windows
     if let firstWindow = windows.first {
-      firstWindow.rootViewController = Page1ViewController()
+      firstWindow.rootViewController = TabBarViewController()
       firstWindow.makeKeyAndVisible()
     }
   }

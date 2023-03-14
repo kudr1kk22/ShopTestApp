@@ -25,34 +25,12 @@ final class SignInVCViewModel: SignInVCViewModelProtocol {
 
   func saveNameToKeychain(email: String) -> Bool {
       guard let data = email.data(using: .utf8) else { return false }
-
       let query: [String: Any] = [
           kSecClass as String: kSecClassGenericPassword,
           kSecAttrAccount as String: email,
           kSecValueData as String: data
       ]
-
       let status = SecItemAdd(query as CFDictionary, nil)
-
       return status == errSecSuccess
   }
-
-  func isNameInKeychain() -> Bool {
-      let query: [String: Any] = [
-          kSecClass as String: kSecClassGenericPassword,
-          kSecAttrAccount as String: "myName",
-          kSecMatchLimit as String: kSecMatchLimitOne,
-          kSecReturnAttributes as String: true
-      ]
-
-      var item: CFTypeRef?
-      let status = SecItemCopyMatching(query as CFDictionary, &item)
-
-      return status == errSecSuccess
-  }
-
-
-
-
-
 }

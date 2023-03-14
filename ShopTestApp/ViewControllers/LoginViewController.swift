@@ -11,6 +11,8 @@ final class LoginViewController: UIViewController {
 
   //MARK: - Properties
 
+  private let viewModel: LoginVCViewModelProtocol
+
   private let welcomeBackLabel: UILabel = {
     let label = UILabel()
     label.font = UIFont(name: Fonts.mainFont, size: 25.0)
@@ -31,7 +33,6 @@ final class LoginViewController: UIViewController {
     textField.font = UIFont(name: Fonts.mainFont, size: 10.0)
     textField.backgroundColor = Colors.textField
 
-
     return textField
   }()
 
@@ -48,7 +49,6 @@ final class LoginViewController: UIViewController {
     textField.backgroundColor = Colors.textField
     textField.isSecureTextEntry = true
 
-
     return textField
   }()
 
@@ -60,6 +60,8 @@ final class LoginViewController: UIViewController {
     button.backgroundColor = Colors.signInbutton
     button.layer.cornerRadius = 15.0
     button.clipsToBounds = true
+    button.addTarget(self, action: #selector(loginButtonDidTap), for: .touchUpInside)
+
     return button
   }()
 
@@ -67,8 +69,22 @@ final class LoginViewController: UIViewController {
     let rightButton  = UIButton(type: .custom)
     rightButton.setImage(UIImage(named: "showpassword") , for: .normal)
     rightButton.addTarget(LoginViewController.self, action: #selector(toggleShowHide), for: .touchUpInside)
+
     return rightButton
   }()
+
+  //MARK: - Initialization
+
+  init(viewModel: LoginVCViewModelProtocol) {
+    self.viewModel = viewModel
+    super.init(nibName: nil, bundle: nil)
+  }
+
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+
+  //MARK: - Life Cycle
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -82,6 +98,14 @@ final class LoginViewController: UIViewController {
     toggle(button: button, textField: passwordTextField)
   }
 
+  @objc func loginButtonDidTap() {
+    guard let email = firstnameTextField.text else { return }
+    let result = viewModel.isNameInKeychain(email: email)
+    if result {
+      presentMainWindow()
+    }
+  }
+
   func toggle(button: UIButton, textField: UITextField) {
     textField.isSecureTextEntry = !textField.isSecureTextEntry
     if textField.isSecureTextEntry {
@@ -90,8 +114,6 @@ final class LoginViewController: UIViewController {
       button.setImage(UIImage(named: "showpassword") , for: .normal) // need another icon
     }
   }
-
-
 }
 
 //MARK: - Constraints
@@ -144,6 +166,16 @@ extension LoginViewController {
       make.right.equalTo(passwordTextField.snp.right)
       make.top.equalTo(passwordTextField.snp.bottom).offset(35.0)
     }
-    
+  }
+}
+
+extension LoginViewController {
+  func presentMainWindow() {
+    guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
+    let windows = windowScene.windows
+    if let firstWindow = windows.first {
+      firstWindow.rootViewController = TabBarViewController()
+      firstWindow.makeKeyAndVisible()
+    }
   }
 }

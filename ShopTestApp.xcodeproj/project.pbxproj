@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A8320DF758F06CB5D20B4E9B /* libPods-ShopTestApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 83E31A73A4F24FE0792D2B3C /* libPods-ShopTestApp.a */; };
+		D95D0BC429C0FDE200A8FCC5 /* LoginVCViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95D0BC329C0FDE200A8FCC5 /* LoginVCViewModel.swift */; };
 		D9A1B39F29BF40A8009D905C /* UITextField+RoundedBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A1B39E29BF40A8009D905C /* UITextField+RoundedBorder.swift */; };
 		D9A1B3A129BF45C1009D905C /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A1B3A029BF45C1009D905C /* ProfileViewController.swift */; };
 		D9A6CDD929BFCF5B00D5D12E /* UIImage+Circle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A6CDD829BFCF5B00D5D12E /* UIImage+Circle.swift */; };
@@ -38,6 +39,7 @@
 		40EBCB68B02DC6AD94F0D269 /* Pods-ShopTestApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShopTestApp.release.xcconfig"; path = "Target Support Files/Pods-ShopTestApp/Pods-ShopTestApp.release.xcconfig"; sourceTree = "<group>"; };
 		83E31A73A4F24FE0792D2B3C /* libPods-ShopTestApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ShopTestApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC7703D04C143C45BBB5D0E3 /* Pods-ShopTestApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShopTestApp.debug.xcconfig"; path = "Target Support Files/Pods-ShopTestApp/Pods-ShopTestApp.debug.xcconfig"; sourceTree = "<group>"; };
+		D95D0BC329C0FDE200A8FCC5 /* LoginVCViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVCViewModel.swift; sourceTree = "<group>"; };
 		D9A1B39E29BF40A8009D905C /* UITextField+RoundedBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+RoundedBorder.swift"; sourceTree = "<group>"; };
 		D9A1B3A029BF45C1009D905C /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		D9A6CDD829BFCF5B00D5D12E /* UIImage+Circle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Circle.swift"; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 			children = (
 				D9F120F729BE5ED200F80262 /* SignInViewController.swift */,
 				D9EE9F3929BF56F500EB7418 /* SignInVCViewModel.swift */,
+				D95D0BC329C0FDE200A8FCC5 /* LoginVCViewModel.swift */,
 			);
 			path = SignInViewController;
 			sourceTree = "<group>";
@@ -327,6 +330,7 @@
 				D9A6CDDE29C0E3DC00D5D12E /* ProfileVCViewModel.swift in Sources */,
 				D9EE9F3F29BF9EEA00EB7418 /* TabBarViewController.swift in Sources */,
 				D9F120F629BE5ED200F80262 /* SceneDelegate.swift in Sources */,
+				D95D0BC429C0FDE200A8FCC5 /* LoginVCViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
