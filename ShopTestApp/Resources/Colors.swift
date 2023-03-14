@@ -18,5 +18,6 @@ enum Colors {
   static let changePhoto = UIColor(hexString: "#808080")
   static let tabBarSelectedItem = UIColor(hexString: "EEEFF4")
   static let tabBarItem = UIColor(hexString: "737297")
-
+  static let cellTextColor = UIColor(hexString: "040402")
+  static let backgroundColor = UIColor(hexString: "#FAF9FF")
 }

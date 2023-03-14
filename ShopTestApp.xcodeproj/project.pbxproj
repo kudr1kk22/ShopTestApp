@@ -11,6 +11,10 @@
 		D9A1B39F29BF40A8009D905C /* UITextField+RoundedBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A1B39E29BF40A8009D905C /* UITextField+RoundedBorder.swift */; };
 		D9A1B3A129BF45C1009D905C /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A1B3A029BF45C1009D905C /* ProfileViewController.swift */; };
 		D9A6CDD929BFCF5B00D5D12E /* UIImage+Circle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A6CDD829BFCF5B00D5D12E /* UIImage+Circle.swift */; };
+		D9A6CDDC29C0696F00D5D12E /* ProfileMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A6CDDB29C0696F00D5D12E /* ProfileMenu.swift */; };
+		D9A6CDDE29C0E3DC00D5D12E /* ProfileVCViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A6CDDD29C0E3DC00D5D12E /* ProfileVCViewModel.swift */; };
+		D9A6CDE029C0E4F500D5D12E /* TabBarVCConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A6CDDF29C0E4F500D5D12E /* TabBarVCConfigurator.swift */; };
+		D9A6CDE329C0F58C00D5D12E /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D9A6CDE229C0F58C00D5D12E /* Montserrat-Bold.ttf */; };
 		D9C58F1129BF310F00E912CA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C58F1029BF310F00E912CA /* LoginViewController.swift */; };
 		D9EE9F3329BF481000EB7418 /* UIImageView+Rounded.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9EE9F3229BF481000EB7418 /* UIImageView+Rounded.swift */; };
 		D9EE9F3529BF488E00EB7418 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9EE9F3429BF488E00EB7418 /* ProfileHeaderView.swift */; };
@@ -37,6 +41,10 @@
 		D9A1B39E29BF40A8009D905C /* UITextField+RoundedBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+RoundedBorder.swift"; sourceTree = "<group>"; };
 		D9A1B3A029BF45C1009D905C /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		D9A6CDD829BFCF5B00D5D12E /* UIImage+Circle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Circle.swift"; sourceTree = "<group>"; };
+		D9A6CDDB29C0696F00D5D12E /* ProfileMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileMenu.swift; sourceTree = "<group>"; };
+		D9A6CDDD29C0E3DC00D5D12E /* ProfileVCViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVCViewModel.swift; sourceTree = "<group>"; };
+		D9A6CDDF29C0E4F500D5D12E /* TabBarVCConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarVCConfigurator.swift; sourceTree = "<group>"; };
+		D9A6CDE229C0F58C00D5D12E /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.ttf"; sourceTree = "<group>"; };
 		D9C58F1029BF310F00E912CA /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D9EE9F3229BF481000EB7418 /* UIImageView+Rounded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Rounded.swift"; sourceTree = "<group>"; };
 		D9EE9F3429BF488E00EB7418 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
@@ -87,12 +95,30 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		D9A6CDDA29C0690A00D5D12E /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				D9EE9F3429BF488E00EB7418 /* ProfileHeaderView.swift */,
+				D9EE9F3729BF4ACD00EB7418 /* ProfileTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		D9A6CDE129C0E60200D5D12E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D9A6CDDB29C0696F00D5D12E /* ProfileMenu.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		D9EE9F3629BF489400EB7418 /* ProfileViewController */ = {
 			isa = PBXGroup;
 			children = (
 				D9A1B3A029BF45C1009D905C /* ProfileViewController.swift */,
-				D9EE9F3729BF4ACD00EB7418 /* ProfileTableViewCell.swift */,
-				D9EE9F3429BF488E00EB7418 /* ProfileHeaderView.swift */,
+				D9A6CDDD29C0E3DC00D5D12E /* ProfileVCViewModel.swift */,
+				D9A6CDE129C0E60200D5D12E /* Models */,
+				D9A6CDDA29C0690A00D5D12E /* Cells */,
 			);
 			path = ProfileViewController;
 			sourceTree = "<group>";
@@ -154,6 +180,7 @@
 			children = (
 				D9F1210929BE61DD00F80262 /* Montserrat-Italic.ttf */,
 				D9F1210829BE61DD00F80262 /* Montserrat.ttf */,
+				D9A6CDE229C0F58C00D5D12E /* Montserrat-Bold.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -162,6 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				D9EE9F3E29BF9EEA00EB7418 /* TabBarViewController.swift */,
+				D9A6CDDF29C0E4F500D5D12E /* TabBarVCConfigurator.swift */,
 				D9EE9F3B29BF8B6400EB7418 /* SignInViewController */,
 				D9EE9F3C29BF8B9000EB7418 /* Page1ViewController.swift */,
 				D9C58F1029BF310F00E912CA /* LoginViewController.swift */,
@@ -240,6 +268,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9A6CDE329C0F58C00D5D12E /* Montserrat-Bold.ttf in Resources */,
 				D9F1210B29BE61DD00F80262 /* Montserrat-Italic.ttf in Resources */,
 				D9F1210029BE5ED500F80262 /* LaunchScreen.storyboard in Resources */,
 				D9F1210A29BE61DD00F80262 /* Montserrat.ttf in Resources */,
@@ -282,6 +311,8 @@
 				D9C58F1129BF310F00E912CA /* LoginViewController.swift in Sources */,
 				D9A6CDD929BFCF5B00D5D12E /* UIImage+Circle.swift in Sources */,
 				D9F120F829BE5ED200F80262 /* SignInViewController.swift in Sources */,
+				D9A6CDDC29C0696F00D5D12E /* ProfileMenu.swift in Sources */,
+				D9A6CDE029C0E4F500D5D12E /* TabBarVCConfigurator.swift in Sources */,
 				D9EE9F3529BF488E00EB7418 /* ProfileHeaderView.swift in Sources */,
 				D9F1211229BE692D00F80262 /* Colors.swift in Sources */,
 				D9A1B39F29BF40A8009D905C /* UITextField+RoundedBorder.swift in Sources */,
@@ -293,6 +324,7 @@
 				D9EE9F3829BF4ACD00EB7418 /* ProfileTableViewCell.swift in Sources */,
 				D9EE9F3D29BF8B9000EB7418 /* Page1ViewController.swift in Sources */,
 				D9F1211529BE736500F80262 /* Fonts.swift in Sources */,
+				D9A6CDDE29C0E3DC00D5D12E /* ProfileVCViewModel.swift in Sources */,
 				D9EE9F3F29BF9EEA00EB7418 /* TabBarViewController.swift in Sources */,
 				D9F120F629BE5ED200F80262 /* SceneDelegate.swift in Sources */,
 			);

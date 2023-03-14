@@ -42,7 +42,7 @@ final class TabBarViewController: UITabBarController {
     let fourthVC = UIViewController()
     fourthVC.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "chatIcon"), tag: 3)
 
-    let profileVC = ProfileViewController()
+    let profileVC = TabBarVCConfigurator.makeProfileViewController()
     profileVC.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "profileIcon"), tag: 4)
 
     let viewControllers = [page1VC, secondVC, thirdVC, fourthVC, profileVC]

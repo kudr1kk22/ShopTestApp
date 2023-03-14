@@ -153,7 +153,7 @@ final class SignInViewController: UIViewController {
       print("Email address is valid")
       let savedName = viewModel.saveNameToKeychain(email: email)
       if savedName {
-          print("Name successfully saved to Keychain")
+        print("Name successfully saved to Keychain")
         presentMainWindow()
       } else {
         showAlert()
@@ -165,12 +165,11 @@ final class SignInViewController: UIViewController {
 
   func presentMainWindow() {
     guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
-        let windows = windowScene.windows
+    let windows = windowScene.windows
     if let firstWindow = windows.first {
       firstWindow.rootViewController = Page1ViewController()
       firstWindow.makeKeyAndVisible()
-        }
-
+    }
   }
 
   //MARK: - Alert
@@ -184,15 +183,15 @@ final class SignInViewController: UIViewController {
 }
 
 extension SignInViewController {
-     func hideKeyboardWhenTappedAround() {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(SignInViewController.dismissKeyboard))
-        tap.cancelsTouchesInView = false
-        view.addGestureRecognizer(tap)
-    }
+  func hideKeyboardWhenTappedAround() {
+    let tap = UITapGestureRecognizer(target: self, action: #selector(SignInViewController.dismissKeyboard))
+    tap.cancelsTouchesInView = false
+    view.addGestureRecognizer(tap)
+  }
 
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
-    }
+  @objc func dismissKeyboard() {
+    view.endEditing(true)
+  }
 }
 
 
@@ -206,7 +205,7 @@ extension SignInViewController: UITextFieldDelegate {
     emailTextField.delegate = self
   }
 
-   func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
     if !textField.hasText {
       return false
     }

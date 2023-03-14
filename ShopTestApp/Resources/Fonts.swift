@@ -9,4 +9,5 @@ import Foundation
 
 enum Fonts {
   static let mainFont = "Montserrat"
+  static let boldFont = "Montserrat-Bold"
 }
