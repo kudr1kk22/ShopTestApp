@@ -27,8 +27,8 @@ final class SignInViewController: UIViewController {
     textField.textAlignment = .center
     textField.roundedBorder()
     textField.attributedPlaceholder = NSAttributedString(
-        string: "First Name",
-        attributes: [NSAttributedString.Key.foregroundColor: Colors.textFieldPlaceHolder, .paragraphStyle: centeredParagraphStyle])
+      string: "First Name",
+      attributes: [NSAttributedString.Key.foregroundColor: Colors.textFieldPlaceHolder, .paragraphStyle: centeredParagraphStyle])
     textField.font = UIFont(name: Fonts.mainFont, size: 10.0)
     textField.backgroundColor = Colors.textField
     return textField
@@ -41,8 +41,8 @@ final class SignInViewController: UIViewController {
     textField.textAlignment = .center
     textField.roundedBorder()
     textField.attributedPlaceholder = NSAttributedString(
-        string: "Last Name",
-        attributes: [NSAttributedString.Key.foregroundColor: Colors.textFieldPlaceHolder, .paragraphStyle: centeredParagraphStyle])
+      string: "Last Name",
+      attributes: [NSAttributedString.Key.foregroundColor: Colors.textFieldPlaceHolder, .paragraphStyle: centeredParagraphStyle])
     textField.font = UIFont(name: Fonts.mainFont, size: 10.0)
     textField.backgroundColor = Colors.textField
     return textField
@@ -55,8 +55,8 @@ final class SignInViewController: UIViewController {
     textField.textAlignment = .center
     textField.roundedBorder()
     textField.attributedPlaceholder = NSAttributedString(
-        string: "Email",
-        attributes: [NSAttributedString.Key.foregroundColor: Colors.textFieldPlaceHolder, .paragraphStyle: centeredParagraphStyle])
+      string: "Email",
+      attributes: [NSAttributedString.Key.foregroundColor: Colors.textFieldPlaceHolder, .paragraphStyle: centeredParagraphStyle])
     textField.font = UIFont(name: Fonts.mainFont, size: 10.0)
     textField.backgroundColor = Colors.textField
     return textField
@@ -70,6 +70,7 @@ final class SignInViewController: UIViewController {
     button.backgroundColor = Colors.signInbutton
     button.layer.cornerRadius = 15.0
     button.clipsToBounds = true
+    button.addTarget(self, action: #selector(signInButtonTapped(_:)), for: .touchUpInside)
     return button
   }()
 
@@ -107,13 +108,28 @@ final class SignInViewController: UIViewController {
     return label
   }()
 
+  private let viewModel: SignInVCViewModelProtocol
+
+  //MARK: - Initialization
+
+  init(viewModel: SignInVCViewModelProtocol) {
+    self.viewModel = viewModel
+    super.init(nibName: nil, bundle: nil)
+  }
+
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+
   //MARK: - Life Cycle
 
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = .white
     setConstraints()
+    textFieldSetDelegate()
     setGesture()
+    self.hideKeyboardWhenTappedAround()
   }
 
   //MARK: - Gestures
@@ -129,7 +145,97 @@ final class SignInViewController: UIViewController {
     present(loginViewController, animated: true)
   }
 
+  //MARK: - Actions
+
+  @objc func signInButtonTapped(_ sender: UIButton) {
+    guard let email = emailTextField.text else { return }
+    if viewModel.isValidEmail(email: email) {
+      print("Email address is valid")
+      let savedName = viewModel.saveNameToKeychain(email: email)
+      if savedName {
+          print("Name successfully saved to Keychain")
+        presentMainWindow()
+      } else {
+        showAlert()
+      }
+    } else {
+      showAlert()
+    }
+  }
+
+  func presentMainWindow() {
+    guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
+        let windows = windowScene.windows
+    if let firstWindow = windows.first {
+      firstWindow.rootViewController = Page1ViewController()
+      firstWindow.makeKeyAndVisible()
+        }
+
+  }
+
+  //MARK: - Alert
+
+  private func showAlert() {
+    let alertController = UIAlertController(title: "Ошибка", message: "Неправильный email или пользователь уже зарегистрирован", preferredStyle: .alert)
+    let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+    alertController.addAction(okAction)
+    present(alertController, animated: true, completion: nil)
+  }
 }
+
+extension SignInViewController {
+     func hideKeyboardWhenTappedAround() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(SignInViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+}
+
+
+// MARK: - UITextFieldDelegate
+
+extension SignInViewController: UITextFieldDelegate {
+
+  private func textFieldSetDelegate() {
+    firstnameTextField.delegate = self
+    lastnameTextField.delegate = self
+    emailTextField.delegate = self
+  }
+
+   func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    if !textField.hasText {
+      return false
+    }
+    textField.resignFirstResponder()
+
+    switch textField {
+    case firstnameTextField:
+      lastnameTextField.becomeFirstResponder()
+    case lastnameTextField:
+      emailTextField.becomeFirstResponder()
+    default:
+      break
+    }
+    return true
+  }
+
+  func textFieldDidBeginEditing(_ textField: UITextField) {
+    switch textField {
+    case firstnameTextField:
+      textField.returnKeyType = .next
+    case lastnameTextField:
+      textField.returnKeyType = .next
+    default:
+      break
+    }
+  }
+
+}
+
 
 //MARK: - Constraints
 

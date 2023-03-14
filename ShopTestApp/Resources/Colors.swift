@@ -16,5 +16,7 @@ enum Colors {
   static let profileImageBorder = UIColor(hexString: "#C0C0C0")
   static let profileName = UIColor(hexString: "#3F3F3F")
   static let changePhoto = UIColor(hexString: "#808080")
+  static let tabBarSelectedItem = UIColor(hexString: "EEEFF4")
+  static let tabBarItem = UIColor(hexString: "737297")
 
 }
