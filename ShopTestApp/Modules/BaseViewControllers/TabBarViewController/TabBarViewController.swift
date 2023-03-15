@@ -30,8 +30,10 @@ final class TabBarViewController: UITabBarController {
 
     tabBar.tintColor = Colors.tabBarItem
 
-    let page1VC = Page1ViewController()
+    let page1VC = TabBarAssembler.makePage1ViewController()
     page1VC.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "homeIcon"), tag: 0)
+    let page1VCnavigationController = UINavigationController(rootViewController: page1VC)
+
 
     let secondVC = UIViewController()
     secondVC.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "bockmarksIcon"), tag: 1)
@@ -42,10 +44,10 @@ final class TabBarViewController: UITabBarController {
     let fourthVC = UIViewController()
     fourthVC.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "chatIcon"), tag: 3)
 
-    let profileVC = TabBarVCConfigurator.makeProfileViewController()
+    let profileVC = TabBarAssembler.makeProfileViewController()
     profileVC.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "profileIcon"), tag: 4)
 
-    let viewControllers = [page1VC, secondVC, thirdVC, fourthVC, profileVC]
+    let viewControllers = [page1VCnavigationController, secondVC, thirdVC, fourthVC, profileVC]
     self.setViewControllers(viewControllers, animated: false)
   }
 }

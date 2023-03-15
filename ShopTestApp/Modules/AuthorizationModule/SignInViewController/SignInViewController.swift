@@ -141,9 +141,7 @@ final class SignInViewController: UIViewController {
   }
 
   @objc private func labelTapped(_ sender: UITapGestureRecognizer) {
-    let viewModel = LoginVCViewModel()
-    let loginViewController = LoginViewController(viewModel: viewModel)
-    present(loginViewController, animated: true)
+    viewModel.openLoginScene()
   }
 
   //MARK: - Actions

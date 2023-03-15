@@ -8,12 +8,25 @@
 import Foundation
 import Security
 
-protocol SignInVCViewModelProtocol {
-  func isValidEmail(email: String) -> Bool
-  func saveNameToKeychain(email: String) -> Bool
-}
-
 final class SignInVCViewModel: SignInVCViewModelProtocol {
+
+  //MARK: - Properties
+
+  private weak var coordinator: SignInCoordinatorProtocol?
+
+  //MARK: - Initialization
+
+  init(coordinator: SignInCoordinatorProtocol) {
+      self.coordinator = coordinator
+  }
+
+  //MARK: - Scenes
+
+  func openLoginScene() {
+      coordinator?.openLoginScene()
+  }
+
+  //MARK: - Email validation
 
   func isValidEmail(email: String) -> Bool {
 

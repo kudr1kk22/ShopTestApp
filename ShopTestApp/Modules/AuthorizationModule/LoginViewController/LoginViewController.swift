@@ -28,7 +28,7 @@ final class LoginViewController: UIViewController {
     textField.textAlignment = .center
     textField.roundedBorder()
     textField.attributedPlaceholder = NSAttributedString(
-      string: "First Name",
+      string: "Email",
       attributes: [NSAttributedString.Key.foregroundColor: Colors.textFieldPlaceHolder, .paragraphStyle: centeredParagraphStyle])
     textField.font = UIFont(name: Fonts.mainFont, size: 10.0)
     textField.backgroundColor = Colors.textField
@@ -73,6 +73,13 @@ final class LoginViewController: UIViewController {
     return rightButton
   }()
 
+  private let backButton: UIBarButtonItem = {
+    let image = UIImage(named: "backbutton")
+    let button =  UIBarButtonItem()
+    button.tintColor = .black
+    return button
+  }()
+
   //MARK: - Initialization
 
   init(viewModel: LoginVCViewModelProtocol) {
@@ -88,8 +95,16 @@ final class LoginViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
+    self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
     view.backgroundColor = .white
     setConstraints()
+  }
+
+  override func viewWillDisappear(_ animated: Bool) {
+    super.viewWillDisappear(animated)
+    if isMovingFromParent {
+      viewModel.finish(shouldMovetoParentVC: false)
+    }
   }
 
   //MARK: - Actions

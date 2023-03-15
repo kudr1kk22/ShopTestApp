@@ -7,11 +7,9 @@
 
 import Foundation
 
-protocol LoginVCViewModelProtocol {
-  func isNameInKeychain(email: String) -> Bool
-}
-
 final class LoginVCViewModel: LoginVCViewModelProtocol {
+
+  private weak var coordinator: LoginCoordinatorProtocol?
 
   func isNameInKeychain(email: String) -> Bool {
       let query: [String: Any] = [
@@ -26,4 +24,9 @@ final class LoginVCViewModel: LoginVCViewModelProtocol {
 
       return status == errSecSuccess
   }
+
+  func finish(shouldMovetoParentVC: Bool) {
+      coordinator?.finish(shouldMovetoParentVC: shouldMovetoParentVC)
+  }
+
 }
