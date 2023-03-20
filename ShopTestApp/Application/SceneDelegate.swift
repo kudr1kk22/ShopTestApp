@@ -18,6 +18,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     self.window?.overrideUserInterfaceStyle = .light
     self.appCoordinator = AppCoordinator(window: window!)
     appCoordinator?.start()
+//    let networkService = NetworkService()
+//    let vm = Page1ViewModel(networkService: networkService)
+//    window?.rootViewController = Page1ViewController(viewModel: vm)
+    window?.makeKeyAndVisible()
   }
 
   func sceneDidDisconnect(_ scene: UIScene) {

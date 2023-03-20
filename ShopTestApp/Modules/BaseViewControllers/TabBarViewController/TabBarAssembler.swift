@@ -33,7 +33,8 @@ final class TabBarAssembler {
   }
 
   private static func makePage1ViewModel() -> Page1ViewModelProtocol {
-      let viewModel = Page1ViewModel()
+    let networkService = NetworkService()
+      let viewModel = Page1ViewModel(networkService: networkService)
       return viewModel
   }
 

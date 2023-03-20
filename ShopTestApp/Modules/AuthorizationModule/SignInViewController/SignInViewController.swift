@@ -129,6 +129,7 @@ final class SignInViewController: UIViewController {
     setConstraints()
     textFieldSetDelegate()
     setGesture()
+    navigationController?.navigationBar.isHidden = true
     self.hideKeyboardWhenTappedAround()
   }
 

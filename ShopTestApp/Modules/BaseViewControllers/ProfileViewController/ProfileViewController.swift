@@ -81,7 +81,7 @@ extension ProfileViewController: UITableViewDelegate {
   }
 
   func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-    return UIScreen.main.bounds.height / 4.0
+    return UIScreen.main.bounds.height / 4.5
   }
 
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

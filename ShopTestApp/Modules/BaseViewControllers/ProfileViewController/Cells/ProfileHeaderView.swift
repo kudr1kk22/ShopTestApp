@@ -108,19 +108,19 @@ final class ProfileHeaderView: UITableViewHeaderFooterView {
 
     changePhotoButton.snp.makeConstraints { make in
       make.centerX.equalToSuperview()
-      make.top.equalTo(profileImageView.snp.bottom).offset(8.5)
+      make.top.equalTo(profileImageView.snp.bottom)
     }
 
     nameLabel.snp.makeConstraints { make in
       make.centerX.equalToSuperview()
-      make.top.equalTo(changePhotoButton.snp.bottom).offset(19.6)
+      make.top.equalTo(changePhotoButton.snp.bottom)
     }
 
     containerView.snp.makeConstraints { make in
       make.height.equalTo(46.0)
       make.left.equalTo(screenBounds.width / 10.0)
       make.right.equalTo(screenBounds.width / -10.0)
-      make.top.equalTo(nameLabel.snp.bottom).offset(38.0)
+      make.top.equalTo(nameLabel.snp.bottom).offset(screenBounds.width / 30.0)
     }
 
     uploadItemButton.snp.makeConstraints { make in

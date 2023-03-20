@@ -1,4 +1,4 @@
-module Pods_ShopTestApp {
+framework module Pods_ShopTestApp {
   umbrella header "Pods-ShopTestApp-umbrella.h"
 
   export *

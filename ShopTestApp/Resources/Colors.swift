@@ -20,4 +20,7 @@ enum Colors {
   static let tabBarItem = UIColor(hexString: "737297")
   static let cellTextColor = UIColor(hexString: "040402")
   static let backgroundColor = UIColor(hexString: "#FAF9FF")
+  static let categoryBackground = UIColor(hexString: "#C4C4C4")
+  static let discountBackground = UIColor(hexString: "#F93A3A")
+  static let searchBackground = UIColor(hexString: "#F5F6F7")
 }

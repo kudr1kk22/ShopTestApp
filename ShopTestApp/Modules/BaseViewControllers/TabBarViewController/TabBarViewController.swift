@@ -71,8 +71,8 @@ extension TabBarViewController {
  private func changeHeightOfTabbar() {
     if UIDevice().userInterfaceIdiom == .phone {
       var tabFrame = tabBar.frame
-      tabFrame.size.height = 100
-      tabFrame.origin.y = view.frame.size.height - 100
+      tabFrame.size.height = 90
+      tabFrame.origin.y = view.frame.size.height - 90
       tabBar.frame = tabFrame
     }
   }
