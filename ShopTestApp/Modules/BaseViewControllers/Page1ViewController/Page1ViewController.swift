@@ -162,7 +162,13 @@ extension Page1ViewController: UICollectionViewDataSource {
 //MARK: - UICollectionViewDelegate
 
 extension Page1ViewController: UICollectionViewDelegate {
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    collectionView.deselectItem(at: indexPath, animated: true)
+    let page2VM = Page2ViewModel(networkService: NetworkService())
+    let page2VC = Page2ViewController(viewModel: page2VM)
+    navigationController?.pushViewController(page2VC, animated: true)
 
+  }
 }
 
 //MARK: - Constraints

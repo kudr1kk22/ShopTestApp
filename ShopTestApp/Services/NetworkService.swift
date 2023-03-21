@@ -10,6 +10,7 @@ import Foundation
 protocol NetworkServiceProtocol {
   func getLatest(completion: @escaping (Result<LatestModelArray, Error>) -> Void)
   func getFlashSales(completion: @escaping (Result<FlashSaleModel, Error>) -> Void)
+  func getDetailsInfo(completion: @escaping (Result<FlashDetailsModel, Error>) -> Void)
 }
 
 final class NetworkService: NetworkServiceProtocol {

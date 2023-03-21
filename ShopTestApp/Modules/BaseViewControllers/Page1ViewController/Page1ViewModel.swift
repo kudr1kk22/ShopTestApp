@@ -34,16 +34,22 @@ enum SectionType {
 
 final class Page1ViewModel: Page1ViewModelProtocol {
 
+  //MARK: - Properties
+
   var sections = [SectionType]()
-  let networkService: NetworkServiceProtocol
+  private let networkService: NetworkServiceProtocol
   var latestModel: [Latest] = []
   var complitionHandler: (() -> Void)?
   var flashSaleModel: [FlashSale] = []
+
+//MARK: - Init
 
   init(networkService: NetworkServiceProtocol) {
     self.networkService = networkService
     fetchData()
   }
+
+  //MARK: - Fetch data
 
   func fetchData() {
     let group = DispatchGroup()
@@ -57,7 +63,6 @@ final class Page1ViewModel: Page1ViewModelProtocol {
       switch result {
       case .success(let model):
         self?.latestModel = model.latest
-//        self?.complitionHandler?()
       case .failure(let error):
         print(error.localizedDescription)
       }
@@ -81,6 +86,8 @@ final class Page1ViewModel: Page1ViewModelProtocol {
     
 
   }
+
+  //MARK: - Configure Models
 
 
   func configureModels() {
