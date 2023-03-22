@@ -254,10 +254,8 @@ extension Page2ViewController {
         count: 1
       )
 
-
       let section = NSCollectionLayoutSection(group: group)
-      section.contentInsets = NSDirectionalEdgeInsets(top: 20, leading: 0, bottom: 0, trailing: 0)
-      section.boundarySupplementaryItems = supplementaryViews
+      section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 0)
       return section
     default:
       // Item
@@ -282,7 +280,6 @@ extension Page2ViewController {
 
       let section = NSCollectionLayoutSection(group: group)
       section.contentInsets = NSDirectionalEdgeInsets(top: 20, leading: 0, bottom: 0, trailing: 0)
-      section.boundarySupplementaryItems = supplementaryViews
       return section
     }
   }

@@ -30,7 +30,6 @@ final class ProfileViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    
     setupUI()
     setTableViewlayout()
     registerCells()
@@ -118,6 +117,7 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
   func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
     if let image = info[.originalImage] as? UIImage {
       headerView.congifure(image: image)
+      viewModel.notification(image: image)
     }
     dismissImagePickerController()
   }

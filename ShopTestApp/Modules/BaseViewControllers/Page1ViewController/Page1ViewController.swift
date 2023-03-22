@@ -179,8 +179,8 @@ extension Page1ViewController {
     view.addSubview(customNavigationBar)
 
     customNavigationBar.snp.makeConstraints { make in
-      make.height.equalTo(100.0)
-      make.top.left.right.equalToSuperview()
+      make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+      make.left.right.equalToSuperview()
     }
 
     collectionView.snp.makeConstraints { make in

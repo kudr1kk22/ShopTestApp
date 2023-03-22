@@ -24,4 +24,5 @@ enum Colors {
   static let discountBackground = UIColor(hexString: "#F93A3A")
   static let searchBackground = UIColor(hexString: "#F5F6F7")
   static let bookmarksShared = UIColor(hexString: "E5E9EF")
+  static let bataColor = UIColor(hexString: "4E55D7")
 }
