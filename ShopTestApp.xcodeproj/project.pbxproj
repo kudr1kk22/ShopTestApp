@@ -44,6 +44,8 @@
 		D987083D29CA0B26008AAF4C /* InfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D987083C29CA0B26008AAF4C /* InfoCell.swift */; };
 		D9A1B39F29BF40A8009D905C /* UITextField+RoundedBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A1B39E29BF40A8009D905C /* UITextField+RoundedBorder.swift */; };
 		D9A1B3A129BF45C1009D905C /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A1B3A029BF45C1009D905C /* ProfileViewController.swift */; };
+		D9A441D829CB43D2008A6428 /* PurchaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A441D729CB43D2008A6428 /* PurchaseView.swift */; };
+		D9A441DA29CB64DD008A6428 /* ColorsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A441D929CB64DD008A6428 /* ColorsCell.swift */; };
 		D9A6CDD929BFCF5B00D5D12E /* UIImage+Circle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A6CDD829BFCF5B00D5D12E /* UIImage+Circle.swift */; };
 		D9A6CDDC29C0696F00D5D12E /* ProfileMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A6CDDB29C0696F00D5D12E /* ProfileMenu.swift */; };
 		D9A6CDDE29C0E3DC00D5D12E /* ProfileVCViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A6CDDD29C0E3DC00D5D12E /* ProfileVCViewModel.swift */; };
@@ -122,6 +124,8 @@
 		D987083C29CA0B26008AAF4C /* InfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCell.swift; sourceTree = "<group>"; };
 		D9A1B39E29BF40A8009D905C /* UITextField+RoundedBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+RoundedBorder.swift"; sourceTree = "<group>"; };
 		D9A1B3A029BF45C1009D905C /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		D9A441D729CB43D2008A6428 /* PurchaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseView.swift; sourceTree = "<group>"; };
+		D9A441D929CB64DD008A6428 /* ColorsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorsCell.swift; sourceTree = "<group>"; };
 		D9A6CDD829BFCF5B00D5D12E /* UIImage+Circle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Circle.swift"; sourceTree = "<group>"; };
 		D9A6CDDB29C0696F00D5D12E /* ProfileMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileMenu.swift; sourceTree = "<group>"; };
 		D9A6CDDD29C0E3DC00D5D12E /* ProfileVCViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVCViewModel.swift; sourceTree = "<group>"; };
@@ -331,6 +335,7 @@
 		D987083929C9B7B7008AAF4C /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				D9A441D929CB64DD008A6428 /* ColorsCell.swift */,
 				D987083C29CA0B26008AAF4C /* InfoCell.swift */,
 				D9C2258529C8CFEE002A6E42 /* FullImageCell.swift */,
 				D987083A29C9D90D008AAF4C /* SmallImagesCell.swift */,
@@ -372,6 +377,7 @@
 			isa = PBXGroup;
 			children = (
 				D9C2257E29C8C605002A6E42 /* Page2ViewController.swift */,
+				D9A441D729CB43D2008A6428 /* PurchaseView.swift */,
 				D9C2258329C8C6FB002A6E42 /* Page2ViewModel.swift */,
 				D987083929C9B7B7008AAF4C /* Cells */,
 				D9C2258129C8C6E5002A6E42 /* Page2ViewModelProtocol.swift */,
@@ -628,6 +634,7 @@
 				D9F1211229BE692D00F80262 /* Colors.swift in Sources */,
 				D96F107229C1C51B0078017B /* Coordinator.swift in Sources */,
 				D96F109F29C1DBFA0078017B /* TabBarVCViewModelProtocol.swift in Sources */,
+				D9A441DA29CB64DD008A6428 /* ColorsCell.swift in Sources */,
 				D96F107F29C1C88D0078017B /* LoginCoordinator.swift in Sources */,
 				D9A1B39F29BF40A8009D905C /* UITextField+RoundedBorder.swift in Sources */,
 				D96F109129C1D7CB0078017B /* ProfileRootCoordinatorProtocol.swift in Sources */,
@@ -645,6 +652,7 @@
 				D96F10A529C2391B0078017B /* Page1Assembler.swift in Sources */,
 				D96F109B29C1DA590078017B /* TabBarVCViewModel.swift in Sources */,
 				D96F106C29C1C42C0078017B /* LoginVCViewModelProtocol.swift in Sources */,
+				D9A441D829CB43D2008A6428 /* PurchaseView.swift in Sources */,
 				D96F107D29C1C7830078017B /* SignInCoordinatorProtocol.swift in Sources */,
 				D9EE9F3829BF4ACD00EB7418 /* ProfileTableViewCell.swift in Sources */,
 				D96F106829C1C3D80078017B /* SignInVCViewModelProtocol.swift in Sources */,

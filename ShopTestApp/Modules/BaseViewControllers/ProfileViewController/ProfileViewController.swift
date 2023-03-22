@@ -136,12 +136,11 @@ extension ProfileViewController {
 
 extension ProfileViewController {
   private func presentSignInWindow() {
-//    guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
-//    let windows = windowScene.windows
-//    if let firstWindow = windows.first {
-//      let viewModel = SignInVCViewModel()
-//      firstWindow.rootViewController = SignInViewController(viewModel: viewModel)
-//      firstWindow.makeKeyAndVisible()
-//    }
+    guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
+    let windows = windowScene.windows
+    if let firstWindow = windows.first {
+      let coordinator = AppCoordinator(window: firstWindow)
+      coordinator.start()
+    }
   }
 }

@@ -48,6 +48,14 @@ final class InfoCell: UICollectionViewCell {
     return image
   }()
 
+  private let colorsLabel: UILabel = {
+    let label = UILabel()
+    label.text = "Color:"
+    label.font = UIFont(name: Fonts.boldFont, size: 13.0)
+    label.textColor = Colors.textFieldPlaceHolder
+    return label
+  }()
+
 
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -76,6 +84,7 @@ extension InfoCell {
     contentView.addSubview(ratingLabel)
     contentView.addSubview(numberOfReviewsLabel)
     contentView.addSubview(starImage)
+    contentView.addSubview(colorsLabel)
 
     let screenBounds = UIScreen.main.bounds
 
@@ -108,6 +117,11 @@ extension InfoCell {
       make.width.equalTo(screenBounds.width / 2)
       make.top.equalTo(itemNameLabel.snp.bottom).offset(8.0)
       make.left.equalTo(itemNameLabel.snp.left)
+    }
+
+    colorsLabel.snp.makeConstraints { make in
+      make.top.equalTo(numberOfReviewsLabel.snp.bottom).offset(8.0)
+      make.left.equalTo(starImage.snp.left)
     }
   }
 }

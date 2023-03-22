@@ -18,6 +18,15 @@ final class Page2ViewController: UIViewController {
     }
   )
 
+  private let backButton: UIButton = {
+    let button = UIButton()
+    button.setImage(UIImage(named: "backButton"), for: .normal)
+    button.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
+    return button
+  }()
+
+  private let purchaseView = PurchaseView()
+
   private var viewModel: Page2ViewModelProtocol
 
   //MARK: - Initialization
@@ -41,11 +50,6 @@ final class Page2ViewController: UIViewController {
     setConstraints()
   }
 
-  override func viewWillAppear(_ animated: Bool) {
-    super.viewWillAppear(true)
-    collectionView.scrollToItem(at: IndexPath(item: 3, section: 1), at: .centeredVertically, animated: false)
-  }
-
   //MARK: - Binding
 
   private func bind() {
@@ -55,6 +59,12 @@ final class Page2ViewController: UIViewController {
     }
   }
 
+  //MARK: - Actions
+
+  @objc private func backButtonDidTap() {
+    self.navigationController?.popViewController(animated: true)
+  }
+
   //MARK: - Fetch data
 
   private func fetchData() {
@@ -62,7 +72,6 @@ final class Page2ViewController: UIViewController {
       self.collectionView.reloadData()
     }
   }
-
 
   //MARK: - Create CollectionViewCell
 
@@ -74,26 +83,30 @@ final class Page2ViewController: UIViewController {
 
     collectionView.register(InfoCell.self, forCellWithReuseIdentifier: "\(InfoCell.self)")
 
+    collectionView.register(ColorsCell.self, forCellWithReuseIdentifier: "\(ColorsCell.self)")
+
     collectionView.dataSource = self
     collectionView.delegate = self
     collectionView.backgroundColor = .white
-    collectionView.delegate = self
   }
-
-
-  
 }
 
 extension Page2ViewController: UIScrollViewDelegate {
 
-  func scrollViewDidScroll(_ scrollView: UIScrollView) {
-    
-  }
+//  func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//    if scrollView == collectionView {
+//      let offset = scrollView.contentOffset.x
+//      let sectionOneWidth = collectionView.frame.width / 2
+//      if offset {
+//        let indexPath = IndexPath(item: 0, section: 1)
+//        collectionView.scrollToItem(at: indexPath, at: .left, animated: true)
+//      } else {
+//        let indexPath = IndexPath(item: 0, section: 0)
+//        collectionView.scrollToItem(at: indexPath, at: .left, animated: true)
+//      }
+//    }
+//  }
 }
-
-
-
-
 
 
 //MARK: - UICollectionViewDataSource
@@ -113,6 +126,8 @@ extension Page2ViewController: UICollectionViewDataSource {
       return viewModels.count
     case .detailsCell:
       return 1
+    case .colorsCell(let viewModels):
+      return viewModels.colors.count
     }
   }
 
@@ -138,11 +153,15 @@ extension Page2ViewController: UICollectionViewDataSource {
 
       cell.configure(with: viewModel)
       return cell
+
+    case .colorsCell(let viewModel):
+      guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(ColorsCell.self)", for: indexPath) as? ColorsCell else { return UICollectionViewCell() }
+      let color = viewModel.colors[indexPath.row]
+      cell.configure(with: color)
+      return cell
+
+
     }
-
-
-
-
   }
 }
 
@@ -155,12 +174,23 @@ extension Page2ViewController: UICollectionViewDelegate {
 extension Page2ViewController {
   private func setConstraints() {
     view.addSubview(collectionView)
+    view.addSubview(backButton)
+    view.addSubview(purchaseView)
 
     collectionView.snp.makeConstraints { make in
       make.edges.equalToSuperview()
     }
-  }
 
+    backButton.snp.makeConstraints { make in
+      make.top.equalToSuperview().offset(90.0)
+      make.left.equalToSuperview().offset(18.0)
+    }
+
+    purchaseView.snp.makeConstraints { make in
+      make.height.equalTo(190.0)
+      make.left.bottom.right.equalToSuperview()
+    }
+  }
 }
 
 extension Page2ViewController {
@@ -248,7 +278,7 @@ extension Page2ViewController {
       let group = NSCollectionLayoutGroup.vertical(
         layoutSize: NSCollectionLayoutSize(
           widthDimension: .fractionalWidth(1.0),
-          heightDimension: .absolute(390)
+          heightDimension: .absolute(120)
         ),
         subitem: item,
         count: 1
@@ -268,18 +298,15 @@ extension Page2ViewController {
 
       item.contentInsets = NSDirectionalEdgeInsets(top: 2, leading: 2, bottom: 2, trailing: 2)
 
-      let group = NSCollectionLayoutGroup.vertical(
-        layoutSize: NSCollectionLayoutSize(
-          widthDimension: .fractionalWidth(1.0),
-          heightDimension: .absolute(390)
-        ),
-        subitem: item,
-        count: 1
-      )
-
+      let groupSize = NSCollectionLayoutSize(
+        widthDimension: .fractionalWidth(0.3),
+        heightDimension: .absolute(50.0))
+      let group = NSCollectionLayoutGroup.horizontal(
+        layoutSize: groupSize,
+        subitems: [item])
 
       let section = NSCollectionLayoutSection(group: group)
-      section.contentInsets = NSDirectionalEdgeInsets(top: 20, leading: 0, bottom: 0, trailing: 0)
+      section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
       return section
     }
   }

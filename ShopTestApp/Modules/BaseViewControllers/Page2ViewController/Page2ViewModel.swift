@@ -11,7 +11,7 @@ enum SectionsType {
   case fullImage(viewModels: [String])
   case smallImages(viewModels: [String])
   case detailsCell(viewModels: FlashDetailsModel)
-
+  case colorsCell(viewModels: FlashDetailsModel)
 }
 
 final class Page2ViewModel: Page2ViewModelProtocol {
@@ -44,6 +44,7 @@ final class Page2ViewModel: Page2ViewModelProtocol {
     sections.append(.fullImage(viewModels: model.imageUrls))
     sections.append(.smallImages(viewModels: model.imageUrls))
     sections.append(.detailsCell(viewModels: model))
+    sections.append(.colorsCell(viewModels: model))
   }
   
 }

@@ -54,9 +54,7 @@ final class Page1ViewController: UIViewController {
   }
 
   private func setNavBar() {
-
     self.navigationController?.navigationBar.isHidden = true
-
   }
 
   //MARK: - Create CollectionViewCell
