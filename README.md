@@ -7,6 +7,10 @@ Stack: MVVM+C, SnapKit, SDWebImage, UIKit, CompositionalLayout, URLSession, KeyC
 
 https://user-images.githubusercontent.com/83513326/227137989-4bc471b3-d58c-4580-a75b-1a35182ec4dc.mp4
 
+
+https://user-images.githubusercontent.com/83513326/227140966-e6e2954d-2640-443a-ad36-a5ac3f83915a.mov
+
+
 https://user-images.githubusercontent.com/83513326/227138583-8273e084-d22e-4ec2-a4f6-92f447563b9a.mov
 
 
