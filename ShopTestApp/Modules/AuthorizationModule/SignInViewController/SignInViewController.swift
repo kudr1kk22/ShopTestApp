@@ -62,7 +62,7 @@ final class SignInViewController: UIViewController {
     return textField
   }()
 
-  private let signInButton: UIButton = {
+  private lazy var signInButton: UIButton = {
     let button = UIButton()
     button.setTitleColor(.white, for: .normal)
     button.setTitle("Sign in", for: .normal)

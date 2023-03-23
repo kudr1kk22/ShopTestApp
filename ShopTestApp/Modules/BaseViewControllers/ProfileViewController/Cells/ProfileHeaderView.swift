@@ -39,7 +39,7 @@ final class ProfileHeaderView: UITableViewHeaderFooterView {
     return label
   }()
 
-  private let changePhotoButton: UIButton = {
+  private lazy var changePhotoButton: UIButton = {
     let button = UIButton()
     button.setTitleColor(Colors.changePhoto, for: .normal)
     button.setTitle("Change photo", for: .normal)

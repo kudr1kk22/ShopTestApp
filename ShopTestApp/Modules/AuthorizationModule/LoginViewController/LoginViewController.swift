@@ -52,7 +52,7 @@ final class LoginViewController: UIViewController {
     return textField
   }()
 
-  private let logInButton: UIButton = {
+  private lazy var logInButton: UIButton = {
     let button = UIButton()
     button.setTitleColor(.white, for: .normal)
     button.setTitle("Login", for: .normal)
@@ -65,10 +65,10 @@ final class LoginViewController: UIViewController {
     return button
   }()
 
-  private let showPasswordButton: UIButton = {
+  private lazy var showPasswordButton: UIButton = {
     let rightButton  = UIButton(type: .custom)
     rightButton.setImage(UIImage(named: "showpassword") , for: .normal)
-    rightButton.addTarget(LoginViewController.self, action: #selector(toggleShowHide), for: .touchUpInside)
+    rightButton.addTarget(self, action: #selector(toggleShowHide), for: .touchUpInside)
 
     return rightButton
   }()
@@ -113,7 +113,7 @@ final class LoginViewController: UIViewController {
     toggle(button: button, textField: passwordTextField)
   }
 
-  @objc func loginButtonDidTap() {
+  @objc func loginButtonDidTap(_ sender: UIButton) {
     guard let email = firstnameTextField.text else { return }
     let result = viewModel.isNameInKeychain(email: email)
     if result {
