@@ -11,17 +11,12 @@ final class Page2ViewController: UIViewController {
 
   //MARK: - Properties
 
-  private var collectionView: UICollectionView = UICollectionView(
-    frame: .zero,
-    collectionViewLayout: UICollectionViewCompositionalLayout { sectionIndex, _ -> NSCollectionLayoutSection? in
-      return Page2ViewController.createSectionLayout(section: sectionIndex)
-    }
-  )
+    private var collectionView: UICollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
 
-  private let backButton: UIButton = {
+  private lazy var backButton: UIButton = {
     let button = UIButton()
     button.setImage(UIImage(named: "backButton"), for: .normal)
-    button.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
+      button.addTarget(self, action: #selector(backButtonDidTap(_:)), for: .touchUpInside)
     return button
   }()
 
@@ -48,6 +43,7 @@ final class Page2ViewController: UIViewController {
     registerCells()
     bind()
     setConstraints()
+      collectionView.allowsMultipleSelection = false
   }
 
   //MARK: - Binding
@@ -61,7 +57,7 @@ final class Page2ViewController: UIViewController {
 
   //MARK: - Actions
 
-  @objc private func backButtonDidTap() {
+    @objc private func backButtonDidTap(_ sender: UIButton) {
     self.navigationController?.popViewController(animated: true)
   }
 
@@ -76,6 +72,12 @@ final class Page2ViewController: UIViewController {
   //MARK: - Create CollectionViewCell
 
   private func registerCells() {
+
+      let layout =  UICollectionViewCompositionalLayout { sectionIndex, _ -> NSCollectionLayoutSection? in
+          return self.createSectionLayout(section: sectionIndex)
+      }
+
+      collectionView.collectionViewLayout = layout
 
     collectionView.register(FullImageCell.self, forCellWithReuseIdentifier: "\(FullImageCell.self)")
 
@@ -93,19 +95,6 @@ final class Page2ViewController: UIViewController {
 
 extension Page2ViewController: UIScrollViewDelegate {
 
-//  func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//    if scrollView == collectionView {
-//      let offset = scrollView.contentOffset.x
-//      let sectionOneWidth = collectionView.frame.width / 2
-//      if offset {
-//        let indexPath = IndexPath(item: 0, section: 1)
-//        collectionView.scrollToItem(at: indexPath, at: .left, animated: true)
-//      } else {
-//        let indexPath = IndexPath(item: 0, section: 0)
-//        collectionView.scrollToItem(at: indexPath, at: .left, animated: true)
-//      }
-//    }
-//  }
 }
 
 
@@ -140,7 +129,7 @@ extension Page2ViewController: UICollectionViewDataSource {
 
       cell.configureCell(with: image)
       return cell
-      
+
     case .smallImages(let viewModels):
       guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(SmallImagesCell.self)", for: indexPath) as? SmallImagesCell else { return UICollectionViewCell() }
       let image = viewModels[indexPath.row]
@@ -166,7 +155,6 @@ extension Page2ViewController: UICollectionViewDataSource {
 }
 
 extension Page2ViewController: UICollectionViewDelegate {
-
 }
 
 //MARK: - Constraints
@@ -178,7 +166,8 @@ extension Page2ViewController {
     view.addSubview(purchaseView)
 
     collectionView.snp.makeConstraints { make in
-      make.edges.equalToSuperview()
+        make.top.left.right.equalToSuperview()
+        make.bottom.equalTo(purchaseView.snp.top)
     }
 
     backButton.snp.makeConstraints { make in
@@ -195,7 +184,7 @@ extension Page2ViewController {
 
 extension Page2ViewController {
 
-  static func createSectionLayout(section: Int) -> NSCollectionLayoutSection {
+   func createSectionLayout(section: Int) -> NSCollectionLayoutSection {
     let supplementaryViews = [
       NSCollectionLayoutBoundarySupplementaryItem(
         layoutSize: NSCollectionLayoutSize(
@@ -217,20 +206,24 @@ extension Page2ViewController {
         )
       )
 
-      item.contentInsets = NSDirectionalEdgeInsets(top: 2, leading: 21, bottom: 2, trailing: 2)
+      item.contentInsets = NSDirectionalEdgeInsets(top: 2, leading: 2, bottom: 2, trailing: 2)
 
       let horizontalGroup = NSCollectionLayoutGroup.horizontal(
         layoutSize: NSCollectionLayoutSize(
-          widthDimension: .fractionalWidth(0.9),
+          widthDimension: .fractionalWidth(1),
           heightDimension: .absolute(279.0)
         ),
         subitem: item,
         count: 1
       )
+
+        horizontalGroup.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 0)
       // Section
       let section = NSCollectionLayoutSection(group: horizontalGroup)
-      section.orthogonalScrollingBehavior = .paging
+      section.orthogonalScrollingBehavior = .continuous
+      section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10)
       section.boundarySupplementaryItems = supplementaryViews
+
       return section
     case 1:
       let itemSize = NSCollectionLayoutSize(
@@ -259,9 +252,14 @@ extension Page2ViewController {
               let maxScale: CGFloat = 1.0
               let scale = max(maxScale - (distanceFromCenter / environment.container.contentSize.width), minScale)
               item.transform = CGAffineTransform(scaleX: scale, y: scale)
+
+              if scale > minScale {
+                  let indexPath = IndexPath(item: item.indexPath.row, section: 0)
+                  self.collectionView.scrollToItem(at: indexPath, at: .left, animated: true)
+              }
           }
       }
-      
+
       return section
 
     case 2:
@@ -299,14 +297,18 @@ extension Page2ViewController {
       item.contentInsets = NSDirectionalEdgeInsets(top: 2, leading: 2, bottom: 2, trailing: 2)
 
       let groupSize = NSCollectionLayoutSize(
-        widthDimension: .fractionalWidth(0.3),
-        heightDimension: .absolute(50.0))
+        widthDimension: .fractionalWidth(0.1),
+        heightDimension: .absolute(40.0))
+
       let group = NSCollectionLayoutGroup.horizontal(
         layoutSize: groupSize,
-        subitems: [item])
+        subitem: item,
+        count: 1)
 
       let section = NSCollectionLayoutSection(group: group)
-      section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
+        section.orthogonalScrollingBehavior = .continuous
+
+      section.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 0, bottom: 0, trailing: 0)
       return section
     }
   }

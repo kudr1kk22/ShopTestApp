@@ -15,6 +15,19 @@ final class ColorsCell: UICollectionViewCell {
     return image
   }()
 
+  override var isSelected: Bool {
+      didSet {
+          if isSelected {
+              layer.borderColor = Colors.borderColor.cgColor
+              layer.borderWidth = 2
+              layer.cornerRadius = 10
+          } else {
+              layer.borderColor = nil
+              layer.borderWidth = 0
+          }
+      }
+  }
+
   override init(frame: CGRect) {
     super.init(frame: frame)
     setConstraints()

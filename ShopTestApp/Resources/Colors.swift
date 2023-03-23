@@ -27,4 +27,5 @@ enum Colors {
   static let bataColor = UIColor(hexString: "4E55D7")
   static let purchaseBackground = UIColor(hexString: "181726")
   static let costColor = UIColor(hexString: "#99A0FF")
+  static let borderColor = UIColor(hexString: "#ADADAD")
 }
